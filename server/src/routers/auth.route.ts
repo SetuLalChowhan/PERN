@@ -9,6 +9,7 @@ import {
   verifyResetOtp,
   refreshTokenHandler,
   logout,
+  googleLogin,
 } from "../controllers/auth.controller.js";
 import { validate } from "../middlewares/validate.middleware.js";
 import {
@@ -24,6 +25,7 @@ const router = express.Router();
 router.post("/register", validate(registerSchema), register);
 router.post("/verify-email", validate(verifyOtpSchema), verifyEmail);
 router.post("/login", validate(loginSchema), login);
+router.post("/google-login", googleLogin);
 router.post("/forgot-password", validate(forgotPasswordSchema), forgotPassword);
 router.post("/verify-reset-otp", validate(verifyOtpSchema), verifyResetOtp);
 router.post("/resend-otp", resendOtp); // Resend OTP usually just needs email, can use verifyOtpSchema with optional OTP or dedicated one
